@@ -1,0 +1,16 @@
+{
+  "name": "componentStateAndPropsNoAnyRule",
+  "version": "1.0.0",
+  "main": "componentStateAndPropsNoAnyRule.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "tsc && jasmine ./dist/**/*.js"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^2.8.2",
+    "@types/node": "^8.5.1",
+    "jasmine": "^2.8.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  }
+}
