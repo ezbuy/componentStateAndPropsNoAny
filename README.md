@@ -1,3 +1,5 @@
+a lint to check if React Component's state or props is any. use any as state or props will make many runtime errors.
+
 # Installation
 
 Install dependencies:
