@@ -1,6 +1,6 @@
 {
   "name": "tslint-component-state-and-props-no-any",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "main": "index.js",
   "scripts": {
