@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "test": "tsc && jasmine ./dist/**/*.js",
-    "pre-publish": "rm -fr ./dist ./rules && npm run test && rm -fr ./dist/test && mv dist/src rules"
+    "prepublish": "rm -fr ./dist ./rules && npm run test && rm -fr ./dist/test && mv dist/src rules"
   },
   "devDependencies": {
     "@types/jasmine": "^2.8.2",
