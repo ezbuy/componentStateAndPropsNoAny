@@ -1,6 +1,6 @@
 {
   "name": "tslint-component-state-and-props-no-any",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "scripts": {
     "test": "tsc && jasmine ./dist/**/*.js",
