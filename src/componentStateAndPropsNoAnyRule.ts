@@ -24,6 +24,7 @@ class NoAnyWalker extends Lint.RuleWalker {
         if (importModule === "react") {
             this.hasImportedReact = true;
         }
+        super.visitImportDeclaration(node);
     }
 
     public visitClassDeclaration(node: ts.ClassDeclaration) {
