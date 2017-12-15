@@ -2,6 +2,7 @@
   "name": "tslint-component-state-and-props-no-any",
   "version": "1.0.3",
   "license": "MIT",
+  "main": "index.js",
   "scripts": {
     "test": "tsc && jasmine ./dist/**/*.js",
     "prepublish": "rm -fr ./dist ./rules && npm run test && rm -fr ./dist/test && mv dist/src rules"
