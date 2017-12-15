@@ -1,5 +1,5 @@
 {
-  "name": "tslint-componentStateAndPropsNoAnyRule",
+  "name": "tslint-component-state-and-props-no-any",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
