@@ -12,8 +12,19 @@ export class Rule extends Lint.Rules.AbstractRule {
 const expressionsWithReact = ["React.PureComponent", "React.Component"];
 const expressions = ["PureComponent", "Component"];
 
+function isAnyKindType(node: ts.Node){
+    return node !== undefined && node !== null && node.kind === ts.SyntaxKind.AnyKeyword;
+}
+
 class NoAnyWalker extends Lint.RuleWalker {
     hasImportedReact = false;
+
+    public visitImportDeclaration(node: ts.ImportDeclaration){
+        const importModule = node.moduleSpecifier.getText();
+        if (importModule === "react") {
+            this.hasImportedReact = true;
+        }
+    }
 
     public visitClassDeclaration(node: ts.ClassDeclaration) {
         node.heritageClauses.forEach(({ types }) => {
@@ -21,7 +32,7 @@ class NoAnyWalker extends Lint.RuleWalker {
                 const expressionText = expression.getText();
                 if ( Array.isArray(typeArguments) && typeArguments.length > 1 &&
                     (expressionsWithReact.indexOf(expressionText) !== -1 || (expressions.indexOf(expressionText) !== -1) && this.hasImportedReact)) {
-                        if ( (typeArguments[0] && typeArguments[0].kind === ts.SyntaxKind.AnyKeyword) || (typeArguments[1] && typeArguments[1].kind === ts.SyntaxKind.AnyKeyword)) {
+                        if ( isAnyKindType(typeArguments[0]) || isAnyKindType(typeArguments[1]) ) {
                             this.addFailure(this.createFailure(node.getStart(), node.getWidth(), Rule.FAILURE_STRING));
                         }
                 }

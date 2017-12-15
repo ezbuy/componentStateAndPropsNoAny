@@ -62,6 +62,27 @@ const cases = [
         }
         `.trim(),
         error: false
+    },
+    {
+        source: `
+        class MyComponent extends Component<any, any>{
+            render(){
+                return null;
+            }
+        }
+        `.trim(),
+        error: false
+    },
+    {
+        source: `
+        import { Component } from "react";
+        class MyComponent extends Component<any, any>{
+            render(){
+                return null;
+            }
+        }
+        `.trim(),
+        error: false
     }
 ]
 
