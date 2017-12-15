@@ -11,7 +11,7 @@ Configure tslint to use the tslint-strict-null-checks folder. Add the following 
 ```json
 {
    "rulesDirectory": [
-     "node_modules/tslint-strict-null-checks/rules"
+     "node_modules/tslint-component-state-and-props-no-any/rules"
    ],
    "rules": {
      ...
