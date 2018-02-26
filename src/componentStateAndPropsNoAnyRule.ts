@@ -28,17 +28,21 @@ class NoAnyWalker extends Lint.RuleWalker {
     }
 
     public visitClassDeclaration(node: ts.ClassDeclaration) {
-        node.heritageClauses.forEach(({ types }) => {
-            types.forEach(({ expression, typeArguments }) => {
-                const expressionText = expression.getText();
-                if ( Array.isArray(typeArguments) && typeArguments.length > 1 &&
-                    (expressionsWithReact.indexOf(expressionText) !== -1 || (expressions.indexOf(expressionText) !== -1) && this.hasImportedReact)) {
-                        if ( isAnyKindType(typeArguments[0]) || isAnyKindType(typeArguments[1]) ) {
-                            this.addFailure(this.createFailure(node.getStart(), node.getWidth(), Rule.FAILURE_STRING));
+        if (Array.isArray(node.heritageClauses)) {
+            node.heritageClauses.forEach(({ types }) => {
+                if (Array.isArray(types)) {
+                    types.forEach(({ expression, typeArguments }) => {
+                        const expressionText = expression.getText();
+                        if ( Array.isArray(typeArguments) && typeArguments.length > 1 &&
+                            (expressionsWithReact.indexOf(expressionText) !== -1 || (expressions.indexOf(expressionText) !== -1) && this.hasImportedReact)) {
+                                if ( isAnyKindType(typeArguments[0]) || isAnyKindType(typeArguments[1]) ) {
+                                    this.addFailure(this.createFailure(node.getStart(), node.getWidth(), Rule.FAILURE_STRING));
+                                }
                         }
+                    });
                 }
             });
-        });
+        }
         super.visitClassDeclaration(node);
     }
 }
